@@ -18,14 +18,14 @@ controls = new THREE.OrbitControls(camera, renderer.domElement);
 // create the shape
 
 //cube
-const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+const cubeGeometry = new THREE.BoxGeometry(2, 2, 2);
 const cubeMaterials = [
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
-  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('img/2.png'), side: THREE.DoubleSide}),
+  new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/3.png'), side: THREE.DoubleSide}),
+  new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('img/4.png'), side: THREE.DoubleSide}),
+  new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('img/5.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/6.png'), side: THREE.DoubleSide}),
 ]
 const material = new THREE.MeshFaceMaterial(cubeMaterials);
 const cube = new THREE.Mesh(cubeGeometry, material);
@@ -38,6 +38,8 @@ scene.add( sphere );
 
 camera.position.z = 18;
 
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 5.0);
+scene.add(ambientLight);
 
 //game logic
 function update() {
