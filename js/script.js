@@ -19,8 +19,16 @@ controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 //cube
 const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
-const cubeMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF, wireframe: true});
-const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+const cubeMaterials = [
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+  new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load('img/img-1.png'), side: THREE.DoubleSide}),
+]
+const material = new THREE.MeshFaceMaterial(cubeMaterials);
+const cube = new THREE.Mesh(cubeGeometry, material);
 scene.add(cube);
 
 const spGeometry = new THREE.SphereGeometry( 5, 32, 32 );
@@ -35,8 +43,8 @@ camera.position.z = 18;
 function update() {
   sphere.rotation.x += 0.01;
   sphere.rotation.y += 0.01;
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.005;
+  // cube.rotation.x += 0.01;
+  // cube.rotation.y += 0.005;
 }
 
 function render() {
